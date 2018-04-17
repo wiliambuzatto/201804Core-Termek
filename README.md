@@ -1,5 +1,6 @@
 # 201804Core-Termek
-Projeto para os alunos da turma de C# AspNetCore
+Projeto para os alunos da turma de C# AspNetCore MVC
+
 
 ## Setup
 **Clone o repositório, e execute:**
