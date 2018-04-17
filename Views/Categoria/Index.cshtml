@@ -1,0 +1,20 @@
+@model Termek.Models.Categoria
+@using Termek.Models
+
+<h2>Manutenção de categorias</h2>
+
+@foreach(var item in ViewBag.Categorias as List<Categoria>){
+    <p>
+        @item.Descricao
+    </p>
+}
+
+<form asp-controller="categoria" asp-action="salvar" method="post">
+    <div class="form-group">
+        <label for="Descricao">Descrição</label>
+        <input type="text" asp-for="Descricao" class="form-control" autofocus>
+    </div>
+    <button type="submit" class="btn btn-primary">
+        Salvar
+    </button>
+</form>
