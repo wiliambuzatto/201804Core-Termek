@@ -17,16 +17,19 @@ dotnet ef database update
 dotnet tun
 ```
 
-## NOTA
+### NOTA
+
 Projeto em andamento, a cada 2 dias terá atualizações, podendo variar de acordo com o andamento dos alunos.
 
-## Objetivo
+### Objetivo
+
 Didático.
 Projeto para ensinar os principios básicos do Asp.Net Core com EntityFramework para a turma atual
 
-## Resultado final
-Controle de produto
-Controle de categorias
-Controle de usuários
-Controle de login
+### Resultado final
+
+ - Controle de produto
+ - Controle de categorias
+ - Controle de usuários
+ - Controle de login
 
