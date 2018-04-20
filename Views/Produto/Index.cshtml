@@ -1,0 +1,16 @@
+@model List<Termek.Models.Produto>
+
+<h2>Lista de produtos</h2>
+
+<table class="table table-striped">
+    @foreach(var produto in Model){
+    <tr>
+        <td>@produto.Id</td>
+        <td>@produto.Nome</td>
+        <td>@produto.Categoria.Descricao</td>
+        <td>@produto.Quantidade</td>
+        <td>@produto.Valor</td>
+        <td></td>
+    </tr>
+    }
+</table>

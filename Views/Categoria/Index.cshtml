@@ -3,18 +3,52 @@
 
 <h2>Manutenção de categorias</h2>
 
-@foreach(var item in ViewBag.Categorias as List<Categoria>){
-    <p>
-        @item.Descricao
-    </p>
-}
+<div class="row">
+    <div class="col-md-6">
+        
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+       
+            @foreach(var item in ViewBag.Categorias as List<Categoria>){
+                <tr>                
+                    <td>
+                        @item.Descricao
+                    </td>
 
-<form asp-controller="categoria" asp-action="salvar" method="post">
-    <div class="form-group">
-        <label for="Descricao">Descrição</label>
-        <input type="text" asp-for="Descricao" class="form-control" autofocus>
+                    <td>
+                        <a href="/categoria/index/@item.Id" class="btn btn-warning">Editar</a> 
+                    </td>
+                    <td>
+                        <form asp-controller="categoria" asp-action="excluir" method="post">
+                            <input type="hidden" name="Id" value="@item.Id">
+                            <button type="submit" class="btn btn-danger">
+                                Excluir
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+
     </div>
-    <button type="submit" class="btn btn-primary">
-        Salvar
-    </button>
-</form>
+    <div class="col-md-6">
+        <form asp-controller="categoria" asp-action="salvar" method="post">
+            <div class="form-group">
+                <label for="Descricao">Descrição</label>
+                <input type="text" asp-for="Descricao" class="form-control" autofocus>
+            </div>
+            <input type="hidden" asp-for="Id">
+            <button type="submit" class="btn btn-primary">
+                Salvar
+            </button>
+        </form>
+    </div>
+</div>

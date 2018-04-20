@@ -14,19 +14,43 @@ namespace Termek.Controllers
 
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
             var categorias = _context.Categoria.ToList();
             ViewBag.Categorias = categorias;
-
-            return View();
+            
+            var categoria = _context.Categoria.FirstOrDefault(c => c.Id == id);
+            
+            return View(categoria);
         }
 
         [HttpPost]
         public IActionResult Salvar(Categoria categoria)
         {
-            _context.Categoria.Add(categoria);
+            if(categoria.Id == 0)
+            {
+                _context.Categoria.Add(categoria);
+            }
+            else
+            {
+                var categoriaBanco = _context.Categoria.FirstOrDefault(c => c.Id == categoria.Id);
+                categoriaBanco.Descricao = categoria.Descricao;
+                _context.Categoria.Update(categoriaBanco);
+            }
+
             _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Excluir(int id)
+        {
+    
+            var categoria = _context.Categoria.FirstOrDefault(c => c.Id == id);
+          
+            _context.Categoria.Remove(categoria);
+    
+            _context.SaveChanges();
+
             return RedirectToAction("Index");
         }
     }

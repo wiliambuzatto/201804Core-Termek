@@ -1,0 +1,30 @@
+<h2>Cadastrar Produto</h2>
+
+<div class="row">
+    <div class="col-md-3">
+
+        <form asp-controller="produto" asp-action="cadastrar" method="post">
+            Marca:
+            <input type="text" name="Marca" class="form-control" required>
+            
+            Modelo:
+            <input type="text" name="Modelo" class="form-control" required>
+
+            Quantidade
+            <input type="text" name="Quantidade" class="form-control" required>
+
+            Valor
+            <input type="text" name="Valor" class="form-control" required>
+
+            Categoria
+            <select name="Categoria" class="form-control">
+                <option value="">Categoria</option>
+            </select>
+
+            Descrição
+            <textarea name="Descricao" class="form-control" ></textarea>
+
+        </form>
+
+    </div>
+</div>
