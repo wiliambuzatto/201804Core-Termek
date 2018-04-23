@@ -6,11 +6,18 @@
     @foreach(var produto in Model){
     <tr>
         <td>@produto.Id</td>
-        <td>@produto.Nome</td>
-        <td>@produto.Categoria.Descricao</td>
+        <td>@produto.Marca</td>
+        <td>@produto.Modelo</td>
         <td>@produto.Quantidade</td>
         <td>@produto.Valor</td>
-        <td></td>
+        <td>
+            <form asp-controller="produto" asp-action="excluir" method="post"> 
+                <input type="hidden" name="id" value="@produto.Id">
+                <button class="btn btn-danger btn-xs">
+                    Excluir
+                </button>
+            </form>
+        </td>
     </tr>
     }
 </table>
