@@ -8,8 +8,12 @@
         <td>@produto.Id</td>
         <td>@produto.Marca</td>
         <td>@produto.Modelo</td>
+        <td>@produto.Categoria.Descricao</td>
         <td>@produto.Quantidade</td>
         <td>@produto.Valor</td>
+        <td>
+            <a href="/produto/editar/@produto.Id" class="btn btn-warning btn-xs">Editar</a>
+        </td>
         <td>
             <form asp-controller="produto" asp-action="excluir" method="post"> 
                 <input type="hidden" name="id" value="@produto.Id">

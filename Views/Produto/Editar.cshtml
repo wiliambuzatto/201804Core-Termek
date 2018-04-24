@@ -1,0 +1,46 @@
+@model Termek.Models.ViewModels.ProdutoViewModel
+<h2>Editar Produto</h2>
+
+<div class="row">
+    <div class="col-md-3">
+
+        <form asp-controller="produto" asp-action="editar" method="post">
+            <input type="hidden" asp-for="Id" />
+            Marca:
+            <input type="text" asp-for="Marca" class="form-control" required>
+            
+            Modelo:
+            <input type="text" asp-for="Modelo" class="form-control" required>
+
+            Quantidade
+            <input type="text" asp-for="Quantidade" class="form-control" required>
+
+            Valor
+            <input type="text" asp-for="Valor" class="form-control" required>
+
+            Categoria
+            <select class="form-control" asp-for="CategoriaId" asp-items="@(new SelectList(Model.Categorias, "Id", "Descricao"))" >
+            </select>
+
+            Descrição
+            <textarea asp-for="Descricao" class="form-control" ></textarea>
+            <br />
+
+            <a href="/produto" class="btn btn-default">Cancelar</a>
+
+            <button type="submit" class="btn btn-success">
+                Salvar alterações
+            </button>
+
+
+        </form>
+
+    </div>
+
+    <div class="col-sm-6">
+        @if(ViewBag.Mensagem != null){
+            <div class="alert alert-success">@ViewBag.Mensagem</div>
+        }
+    </div>
+
+</div>

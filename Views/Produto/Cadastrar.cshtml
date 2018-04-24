@@ -1,3 +1,4 @@
+@model Termek.Models.ViewModels.ProdutoViewModel
 <h2>Cadastrar Produto</h2>
 
 <div class="row">
@@ -18,7 +19,10 @@
 
             Categoria
             <select name="CategoriaId" class="form-control">
-                <option value="1">Categoria</option>
+                @foreach(var item in Model.Categorias){
+                    <option value="@item.Id">@item.Descricao</option>
+                }
+
             </select>
 
             Descrição
@@ -33,4 +37,11 @@
         </form>
 
     </div>
+
+    <div class="col-sm-6">
+        @if(ViewBag.Mensagem != null){
+            <div class="alert alert-success">@ViewBag.Mensagem</div>
+        }
+    </div>
+
 </div>

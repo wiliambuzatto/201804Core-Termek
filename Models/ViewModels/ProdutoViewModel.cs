@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Termek.Models.ViewModels
 {
     public class ProdutoViewModel
@@ -9,5 +11,6 @@ namespace Termek.Models.ViewModels
         public int Quantidade { get; set; }
         public string Descricao { get; set; }
         public int CategoriaId { get; set; }
+        public List<Categoria> Categorias { get; set; }
     }
 }
