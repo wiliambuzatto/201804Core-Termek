@@ -1,0 +1,88 @@
+@model List<Termek.Models.Usuario>
+
+<h2>Usuários</h2>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  Novo usuário
+</button>
+
+<hr />
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Codigo</th>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Senha</th>
+        <th>Perfil</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach(var item in Model)
+      {
+      <tr>
+        <td>@item.Id</td>
+        <td>@item.Nome</td>
+        <td>@item.Email</td>
+        <td>******</td>
+        <td>@item.Perfil</td>
+        <td>
+          <form asp-controller="usuario" asp-action="excluir" method="post">
+            <input type="hidden" name="id" value="@item.Id">
+            <button type="submit" class="btn btn-danger btn-sm">
+              Excluir
+            </button>
+          </form>
+        </td>
+      </tr>
+      }
+
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Cadastrar usuário</h4>
+      </div>
+      <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <form asp-controller="usuario" asp-action="cadastrar" method="post">
+                        Nome
+                        <input type="text" name="Nome" class="form-control" required />
+                        E-mail
+                        <input type="email" name="Email" class="form-control" required />
+                        Senha
+                        <input type="password" name="Senha" class="form-control" required />
+                        Peril
+                        <select name="Perfil" class="form-control">
+                            <option value="Administrador">Administrador</option>
+                            <option value="Cliente">Cliente</option>
+                        </select>
+                        <br />
+
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Cadastrar</button>
+                    </form>
+                </div>
+           </div> 
+      </div>
+   
+    </div>
+  </div>
+</div>

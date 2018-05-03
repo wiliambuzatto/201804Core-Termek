@@ -1,4 +1,5 @@
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Termek.Data;
@@ -7,6 +8,7 @@ using Termek.Models.ViewModels;
 
 namespace Termek.Controllers
 {
+    [Authorize]
     public class ProdutoController : Controller
     {
         private readonly DataContext _context;

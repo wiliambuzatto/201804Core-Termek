@@ -11,9 +11,10 @@ using Termek.Data;
 namespace Termek.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180502230515_AdicionadoUsuario")]
+    partial class AdicionadoUsuario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,24 +55,6 @@ namespace Termek.Migrations
                     b.HasIndex("CategoriaId");
 
                     b.ToTable("Produto");
-                });
-
-            modelBuilder.Entity("Termek.Models.Usuario", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Email");
-
-                    b.Property<string>("Nome");
-
-                    b.Property<string>("Perfil");
-
-                    b.Property<string>("Senha");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Usuario");
                 });
 
             modelBuilder.Entity("Termek.Models.Produto", b =>
