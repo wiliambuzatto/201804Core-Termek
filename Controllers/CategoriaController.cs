@@ -1,10 +1,12 @@
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Termek.Data;
 using Termek.Models;
 
 namespace Termek.Controllers
 {
+    [Authorize(Roles = "Administrador, Usuario")]
     public class CategoriaController : Controller
     {
         public readonly DataContext _context;

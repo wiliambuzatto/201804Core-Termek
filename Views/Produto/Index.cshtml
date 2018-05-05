@@ -3,9 +3,12 @@
 <h2>Lista de produtos</h2>
 
 <table class="table table-striped">
-    @foreach(var produto in Model){
+    @foreach(var produto in Model)
+    {
     <tr>
-        <td>@produto.Id</td>
+        <td width="100">
+            <img src="@produto.Foto" class="img-responsive img-thumbnail">
+        </td>
         <td>@produto.Marca</td>
         <td>@produto.Modelo</td>
         <td>@produto.Categoria.Descricao</td>
@@ -15,12 +18,15 @@
             <a href="/produto/editar/@produto.Id" class="btn btn-warning btn-xs">Editar</a>
         </td>
         <td>
+            @if(User.IsInRole("Administrador"))
+            {
             <form asp-controller="produto" asp-action="excluir" method="post"> 
                 <input type="hidden" name="id" value="@produto.Id">
                 <button class="btn btn-danger btn-xs">
                     Excluir
                 </button>
             </form>
+            }
         </td>
     </tr>
     }

@@ -51,7 +51,7 @@ namespace Termek
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Site}/{action=Index}/{id?}");
             });
         }
     }

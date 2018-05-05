@@ -17,6 +17,8 @@
     </environment>
 </head>
 <body>
+    @if(User.Identity.IsAuthenticated)
+    {
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -35,12 +37,19 @@
                     <li><a asp-controller="produto" asp-action="index">Lista de Produtos</a></li>
                     <li><a asp-controller="produto" asp-action="cadastrar">Novo Produto</a></li>
                     <li><a asp-controller="usuario" asp-action="index">Usuários</a></li>
-
-                    
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#">@User.Identity.Name</a>
+                    </li>
+                    <li>
+                        <a href="/usuario/sair">Sair</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
+    }
     <div class="container body-content">
         @RenderBody()
         <hr />

@@ -5,12 +5,14 @@ using System.Security.Cryptography;
 using System.Text;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Termek.Data;
 using Termek.Models;
 
 namespace Termek.Controllers
 {
+    [Authorize(Roles = "Administrador, Usuario")]
     public class UsuarioController : Controller
     {
         private readonly DataContext _context;
@@ -48,12 +50,14 @@ namespace Termek.Controllers
             return RedirectToAction("Index");
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult Login(string Email, string Senha)
         {
@@ -82,6 +86,13 @@ namespace Termek.Controllers
             }
 
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Sair()
+        {
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("login");
         }
 
 
