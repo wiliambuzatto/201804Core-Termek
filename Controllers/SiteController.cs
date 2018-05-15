@@ -18,5 +18,15 @@ namespace Termek.Controllers
             var produtos = _context.Produto.ToList();
             return View(produtos);
         }
+
+        [HttpGet]
+        public IActionResult Buscar(string busca)
+        {
+            var produtos = _context.Produto.Where(p => 
+                                                  p.Marca.Contains(busca) ||
+                                                  p.Modelo.Contains(busca)
+                                                  ).ToList();
+            return View("Index", produtos);
+        }
     }
 }

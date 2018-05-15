@@ -81,6 +81,9 @@ namespace Termek.Controllers
 
                 HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
+                if(usuario.Perfil == "Cliente")
+                    return Redirect("/site");
+
                 return Redirect("/home/index");
 
             }
@@ -89,9 +92,13 @@ namespace Termek.Controllers
         }
 
         [HttpGet]
-        public IActionResult Sair()
+        [AllowAnonymous]
+        public IActionResult Sair(string area)
         {
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            if(area == "cliente")
+                return Redirect("/site");
+
             return RedirectToAction("login");
         }
 
